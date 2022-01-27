@@ -37,4 +37,19 @@ public class UserRestcontroller { //API 화면
 		
 		return result;
 	}
+	
+	@PostMapping("/id_check")
+	public Map<String, String> idDuplicateCheck(@RequestParam("userId") String userId) {
+		int count = userBO.idDuplicateCheck(userId);
+		
+		Map<String, String> idCheck = new HashMap<>();
+		
+		if(count == 1) {
+			idCheck.put("idCheck", "fail");
+		}else {
+			idCheck.put("idCheck", "success");
+		}
+		
+		return idCheck;
+	}
 }

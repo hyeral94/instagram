@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
- <mapper namespace="com.somsom.instagram.dao.UserDAO">
+ <mapper namespace="com.somsom.instagram.user.dao.UserDAO">
  	<insert id="insertUser" parameterType="map">
  		INSERT INTO `user`
  		(
@@ -24,4 +24,10 @@
  			, now()
  		)
  	</insert>
+ 	<!-- 아이디 중복체크 : count가 1이면 중복 0이면 사용가능 -->
+ 	<select id="idDuplicateCheck" parameterType="int" resultType="com.somsom.instagram.user.model.User">
+ 		SELECT COUNT(*) FROM `user`
+ 		WHERE `userId` = #{userId}
+ 	
+ 	</select>
  </mapper>
