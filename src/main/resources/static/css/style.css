@@ -1,34 +1,38 @@
 @charset "UTF-8";
 
-.box1 {
-	width:400px;
+#wrap {
+	width:1200px;
 	height:800px;
+	margin:auto;
+}
+
+header {
+	width:1200px;
+	height:50px;
+}
+
+#logout-btn {
+	background-color:#FAF4C0;
+}
+
+.box1 {
+	width:500px;
 	margin:auto;
 }
 
 .box2 {
-	width:500px;
-	height:800px;
-	margin:auto;
-	
-}
-
-.box3 {
 	width:100px;
-	height:800px;
 	margin:auto;
 }
 
-#box-border {
-  width:500px;
-  height:800px;
-  background-color: white;
-  border: 1px solid #D5D5D5;
-  padding:30px
+#box {
+	margin:0;
 }
 
 #box-border {
-	border: 1px solid black;
+  background-color: white;
+  border: 2px solid #D5D5D5;
+  padding:30px
 }
 
 #joinbtn {
@@ -41,4 +45,10 @@
 
 #facebook-login {
 	color:#000CB7;
+}
+
+#img {
+	width:600px;
+	height:800px;
+	
 }

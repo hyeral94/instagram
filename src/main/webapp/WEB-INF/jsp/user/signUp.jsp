@@ -15,69 +15,70 @@
 
 </head>
 <body>
-	<div class="d-flex">
-		<div class="box1"></div>
-		<div class="box1" id="box-border">
-			<header>
-				<div><h1 class="text-center mt-3">Instagram</h1></div>
-				<div><h4 class="text-center text-secondary mt-3">친구들의 사진과 동영상을 보려면 가입하세요.</h4></div>
-				<div><button type="button" class="btn btn-primary form-control mt-3">Facebook으로 로그인</button></div>
-			</header>
-			<hr>
-			<section>
-				<input type="text" class="form-control" placeholder="사용자 이름" name="loginId" id="loginIdInput">
-				<input type="text" class="form-control mt-3" placeholder="비밀번호" name="password" id="passwordInput">
-				<input type="text" class="form-control mt-3" placeholder="비밀번호 확인" name="passwordCk" id="passwordCkInput">
-				<input type="text" class="form-control mt-3" placeholder="성명" name="name" id="nameInput">
-				<input type="text" class="form-control mt-3" placeholder="이메일 주소" name="email" id="emailInput">
-				
-				<button type="button" class="btn form-control mt-3 text-white" id="joinbtn">가입</button>
-				
-				<div class="text-center mt-3"><h4>계정이 있으신가요?<a href="">로그인</a></h4></div>
-				<c:import url ="/WEB-INF/jsp/include/appStore.jsp" />
-			</section>
+	<div class="d-flex mt-5">
+		<div class="box2"></div>
+		<img id="img" src="https://img.appstory.co.kr/@files/monthly.appstory.co.kr/thum/Bdatafile/Board/dir_100/10045.jpg">
+		
+		<div class="box1" id="box">
+			<div id="box-border">
+				<header>
+					<div><h1 class="text-center mt-3">Instagram</h1></div>
+					<div><h4 class="text-center text-secondary mt-3">친구들의 사진과 동영상을 보려면 가입하세요.</h4></div>
+					<div><button type="button" class="btn btn-primary form-control mt-3">Facebook으로 로그인</button></div>
+				</header>
+				<hr>
+				<form id="signUpForm">
+						<input type="text" class="form-control" placeholder="사용자 이름" name="loginId" id="loginIdInput" required oninput = "checkId()">
+						<div id="duplicateId" class="d-none"><small class="text-danger">중복된 ID 입니다.</small></div>
+						<div id="noneDuplicateId" class="d-none"><small class="text-success">사용 가능한 ID 입니다.</small></div>
+						
+						<input type="text" class="form-control mt-3" placeholder="비밀번호" name="password" id="passwordInput">
+						<input type="text" class="form-control mt-3" placeholder="비밀번호 확인" name="passwordCk" id="passwordCkInput">
+						<small id="errorPassword" class="text-danger d-none">비밀번호가 일치하지 않습니다.</small>
+						
+						<input type="text" class="form-control mt-3" placeholder="성명" name="name" id="nameInput">
+						<input type="text" class="form-control mt-3" placeholder="이메일 주소" name="email" id="emailInput">
+						
+						<button type="submit" class="btn form-control mt-3 text-white" id="joinbtn">가입</button>
+				</form>
+			</div>
 			
-			<c:import url ="/WEB-INF/jsp/include/footer.jsp" />
-		
-		
+			<div id="box-border" class="mt-3">
+				<div class="text-center"><h4>계정이 있으신가요?<a href="/user/signin_view">로그인</a></h></div>
+			</div>		
+			
+				<c:import url ="/WEB-INF/jsp/include/appStore.jsp" />
+					
 		</div>
 		
-		<div class="box1"></div>
+		<div class="box2"></div>
 	</div>
+		<c:import url ="/WEB-INF/jsp/include/footer.jsp" />
+	
 	
 	<script>
 		$(document).ready(function(){
+					
+			var isIdCheck = false;
+			var isDuplicateId = true;
 			
-			$("#loginIdInput").on("Input", function(){
-				var loginId = $(this).val();
-
-				$.ajax({
-					type:"post",
-					utl:"user/id_check",
-					data:{"loginId":loginId},
-					success:function(data) {
-						if(data.idCheck == "success");
-						alert("사용가능한 아이디 입니다.");
-					}else {
-						alert("중복된 아이디 입니다.").
-					},
-					error:function() {
-						alert("에러발생");
-					}
-					
-					
-				});
-				
+		   $("#loginIdInput").on("input", function() {
+			   
+				$("#duplicateId").addClass("d-none");
+				$("#noneDuplicateId").addClass("d-none");
+				isIdCheck = false;
+				isDuplicateId = true;
 			});
 			
 			
-			$("#joinbtn").on("click", function(){
+			$("#signUpForm").on("submit", function(){
+				
 				var loginId = $("#loginIdInput").val();
 				var password = $("#passwordInput").val();
 				var passwordCk = $("#passwordCkInput").val();
 				var name = $("#nameInput").val();
 				var email = $("#emailInput").val();
-				
+		
 				if(loginId == ""){
 					alert("사용자 이름을 입력하세요.");
 					return;
@@ -89,7 +90,7 @@
 				}
 				
 				if(password != passwordCk){
-					alert("비밀번호가 일치하지 않습니다.");
+					$("#errorPassword").removeClass("d-none");
 					return;
 				}
 				
@@ -101,6 +102,11 @@
 				if(email == ""){
 					alert("이메일 주소를 입력하세요.");
 					return;
+				}
+				
+				if(isDuplicate == true) {
+					alert("아이디가 중복되었습니다.");
+					return ;
 				}
 				
 				$.ajax({
@@ -119,14 +125,11 @@
 						alert("에러 발생");
 					}
 				});
-				
-				
-				
 
 			});
-			
+			function.checkId(){}
+			var loginId = $("#loginIdInput").val();
 		});
-		
 	
 	</script>
 

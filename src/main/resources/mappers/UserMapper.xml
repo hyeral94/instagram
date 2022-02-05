@@ -25,9 +25,25 @@
  		)
  	</insert>
  	<!-- 아이디 중복체크 : count가 1이면 중복 0이면 사용가능 -->
- 	<select id="idDuplicateCheck" parameterType="int" resultType="com.somsom.instagram.user.model.User">
+ 	<select id="selectDuplicateId" parameterType="string" resultType="int">
  		SELECT COUNT(*) FROM `user`
- 		WHERE `userId` = #{userId}
+ 		WHERE `loginId` = #{loginId}
  	
+ 	</select>
+ 	
+ 	 <select id="selectIdPassword" parameterType="map" resultType="com.somsom.instagram.user.model.User">
+ 		SELECT
+ 			`id`
+ 			, `loginId`
+ 			, `password`
+ 			, `name`
+ 			, `email`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`user`	
+ 		WHERE
+ 			`loginId` = #{loginId}
+ 			AND `password` = #{password}
  	</select>
  </mapper>
