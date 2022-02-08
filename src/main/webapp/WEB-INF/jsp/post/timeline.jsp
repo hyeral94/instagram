@@ -16,35 +16,26 @@
 </head>
 <body>
 	<div id="wrap">
-		<header class="d-flex">
-			<div id="logo" class="col-4 d-flex">
-				<img width="50" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxODExMjRfMjcx%2FMDAxNTQzMDU0NzM0MjAx.39pqg0lYdA8WKpPjZEDU49hMMj3y1eHlZhRcwREuHn4g.tX6jV1TwgQsPuVNDTZA9-UD54nrEV90J1Wr-Pl_21fAg.JPEG.appcomo%2Fse3_image_1804520136.jpg&type=sc960_832">
-				<h3 class="mt-1">Instagram</h3>
-			</div>
-			<div class="col-7"></div>
-			<div class="col-2">
-				<button type="button" class="btn btn-samll text-white mt-1" id="logout-btn">로그아웃</button>
-			</div>
-		</header>
+	
+		<c:import url ="/WEB-INF/jsp/include/logo.jsp" />
 		
-		<section class="d-flex">
-			<div class="col-2"></div>
-			<div class="col-8">
-				<textarea class="form-control mt-2" rows="5" cols="3"></textarea>
-				<button type="button" class="btn btn-small btn-primary justify-content-end">업로드</button>
+		<section>
+			<div id="content2"></div>
+			<div id="content1">
+				
+				<c:import url ="/WEB-INF/jsp/include/write.jsp" />
+				
+				<c:import url ="/WEB-INF/jsp/include/profile.jsp" />
+			
 			</div>
-			<div>
-				<div id="profill"></div>
-
-				<div></div>
-				<div></div>
-			</div>
-			<div class="col-2"></div>
+			<div id="content2"></div>
 		</section>
 		
 		<footer>
 			<c:import url ="/WEB-INF/jsp/include/footer.jsp" />
 		</footer>
 	</div>
+	
+
 </body>
 </html>

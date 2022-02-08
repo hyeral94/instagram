@@ -31,7 +31,7 @@
  	
  	</select>
  	
- 	 <select id="selectIdPassword" parameterType="map" resultType="com.somsom.instagram.user.model.User">
+ 	<select id="selectUser" parameterType="map" resultType="com.somsom.instagram.user.model.User">
  		SELECT
  			`id`
  			, `loginId`

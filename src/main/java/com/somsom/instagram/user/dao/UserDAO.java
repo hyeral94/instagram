@@ -7,6 +7,7 @@ import com.somsom.instagram.user.model.User;
 
 @Repository
 public interface UserDAO {
+	
 	public int insertUser(
 			@Param("loginId") String loginId,
 			@Param("password") String password,
@@ -16,7 +17,5 @@ public interface UserDAO {
 	// 아이디 중복체크
 	public int selectDuplicateId(@Param("loginId") String loginId);
 	
-	public User selectIdPassword(
-			@Param("loginId") String loginID,
-			@Param("password") String password);
+	public User selectUser(@Param("loginId") String loginId, @Param("password") String password);
 }

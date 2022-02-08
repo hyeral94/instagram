@@ -71,7 +71,7 @@
 					data:{"loginId":loginId, "password":password},
 					success:function(data){
 						if(data.result == "success"){
-							location.href="/post/timeline"
+							location.href="/post/timeline_view"
 						}else {
 							alert("아이디 또는 비밀번호를 입력하세요.");
 						}
@@ -85,6 +85,18 @@
 				});
 			});
 			
+			 var bannerList = ["https://www.thedigitalmkt.com/wp-content/uploads/business-hands-instagram-iphone-preview.jpg", "http://www.casenews.co.kr/news/photo/202012/4038_14474_615.jpg", "http://file2.nocutnews.co.kr/newsroom/image/2020/02/05/20200205112903193427_6_710_473.jpg"];
+	         var currentImageIndex = 0;
+	         
+	            setInterval(function() {
+	                $("#img").attr("src", bannerList[currentImageIndex]);
+	                currentImageIndex++;
+
+	                if(currentImageIndex == bannerList.length) {
+	                    currentImageIndex = 0;
+	                }
+	            }, 1500); 
+	            
 		});
 	
 	</script>	

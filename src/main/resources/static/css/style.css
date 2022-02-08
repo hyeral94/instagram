@@ -6,7 +6,7 @@
 	margin:auto;
 }
 
-header {
+header > #logo {
 	width:1200px;
 	height:50px;
 }
@@ -51,4 +51,20 @@ header {
 	width:600px;
 	height:800px;
 	
+}
+
+#content1 {
+	width:800px;
+	margin:auto;
+}
+
+#content2 {
+	width:200px;
+	margin:auto;
+}
+
+#content-border {
+  background-color: white;
+  border: 2px solid #D5D5D5;
+  padding:30px
 }

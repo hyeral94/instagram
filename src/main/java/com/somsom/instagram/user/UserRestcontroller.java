@@ -49,9 +49,9 @@ public class UserRestcontroller { //API 화면
 		Map<String, Boolean> result = new HashMap<>();
 		
 		if(userBO.isDuplicateId(loginId)) {
-			result.put("is_duplicate", true);
+			result.put("id_duplicate", true);
 		}else {
-			result.put("is_duplicate", false);
+			result.put("id_duplicate", false);
 		}
 		
 		return result;
@@ -63,22 +63,26 @@ public class UserRestcontroller { //API 화면
 			@RequestParam("password") String password,
 			HttpServletRequest request) {
 		
+		User user = userBO.getUSer(loginId, password);
+		
 		Map<String, String> result = new HashMap<>();
-		User user = userBO.signInUser(loginId, password);
 		
 		if(user != null) {
-		
+
 			result.put("result", "success");
-				
+
 			HttpSession session = request.getSession();
+
+			session.setAttribute("userId", user.getId());
 			session.setAttribute("userLoginId", user.getLoginId());
-			session.setAttribute("userEmail", user.getEmail());
+			session.setAttribute("userName", user.getName());
 			
-		} else {
+		}else {
+
 			result.put("result", "fail");
 		}
 		
 		return result;
-		
-		}
+	}
+	
 }

@@ -28,16 +28,16 @@
 				</header>
 				<hr>
 				<form id="signUpForm">
-						<input type="text" class="form-control" placeholder="사용자 이름" name="loginId" id="loginIdInput" required oninput = "checkId()">
-						<div id="duplicateId" class="d-none"><small class="text-danger">중복된 ID 입니다.</small></div>
-						<div id="noneDuplicateId" class="d-none"><small class="text-success">사용 가능한 ID 입니다.</small></div>
+						<input type="text" class="form-control" placeholder="사용자 이름" id="loginIdInput">
+							<div id="duplicateId" class="d-none"><small class="text-danger">중복된 ID 입니다.</small></div>
+							<div id="noneDuplicateId" class="d-none"><small class="text-success">사용 가능한 ID 입니다.</small></div>
 						
-						<input type="text" class="form-control mt-3" placeholder="비밀번호" name="password" id="passwordInput">
-						<input type="text" class="form-control mt-3" placeholder="비밀번호 확인" name="passwordCk" id="passwordCkInput">
-						<small id="errorPassword" class="text-danger d-none">비밀번호가 일치하지 않습니다.</small>
+						<input type="text" class="form-control mt-3" placeholder="비밀번호" id="passwordInput">
+						<input type="text" class="form-control mt-3" placeholder="비밀번호 확인" id="passwordCkInput">
+							<small id="errorPassword" class="text-danger d-none">비밀번호가 일치하지 않습니다.</small>
 						
-						<input type="text" class="form-control mt-3" placeholder="성명" name="name" id="nameInput">
-						<input type="text" class="form-control mt-3" placeholder="이메일 주소" name="email" id="emailInput">
+						<input type="text" class="form-control mt-3" placeholder="성명" id="nameInput">
+						<input type="text" class="form-control mt-3" placeholder="이메일 주소" id="emailInput">
 						
 						<button type="submit" class="btn form-control mt-3 text-white" id="joinbtn">가입</button>
 				</form>
@@ -55,59 +55,44 @@
 	</div>
 		<c:import url ="/WEB-INF/jsp/include/footer.jsp" />
 	
-	
 	<script>
 		$(document).ready(function(){
-					
-			var isIdCheck = false;
-			var isDuplicateId = true;
-			
-		   $("#loginIdInput").on("input", function() {
-			   
-				$("#duplicateId").addClass("d-none");
-				$("#noneDuplicateId").addClass("d-none");
-				isIdCheck = false;
-				isDuplicateId = true;
-			});
-			
+		
 			
 			$("#signUpForm").on("submit", function(){
 				
 				var loginId = $("#loginIdInput").val();
 				var password = $("#passwordInput").val();
-				var passwordCk = $("#passwordCkInput").val();
+				var passwordCheck = $("#passwordCkInput").val();
 				var name = $("#nameInput").val();
 				var email = $("#emailInput").val();
-		
-				if(loginId == ""){
+				
+				if(loginId == null || loginId == ""){
 					alert("사용자 이름을 입력하세요.");
 					return;
 				}
-	
-				if(password == ""){
+				
+				if(password == null || password == ""){
 					alert("비밀번호를 입력하세요.");
 					return;
 				}
 				
-				if(password != passwordCk){
-					$("#errorPassword").removeClass("d-none");
-					return;
+				if(password != passwordCheck){
+					alert("비밀번호가 일치하지 않습니다.");
+					return
 				}
 				
-				if(name == ""){
+				if(name == null || name == ""){
 					alert("성명을 입력하세요.");
 					return;
 				}
 				
-				if(email == ""){
+				if(email == null || email == ""){
 					alert("이메일 주소를 입력하세요.");
 					return;
 				}
 				
-				if(isDuplicate == true) {
-					alert("아이디가 중복되었습니다.");
-					return ;
-				}
+				
 				
 				$.ajax({
 					type:"post",
@@ -116,20 +101,56 @@
 					success:function(data) {
 						if(data.result == "success"){
 							location.href="/user/signin_view";
-							
-						}else {
+						}else{
 							alert("회원가입 실패");
 						}
 					},
 					error:function() {
 						alert("에러 발생");
 					}
+					
 				});
-
 			});
-			function.checkId(){}
-			var loginId = $("#loginIdInput").val();
+			
+			$("#loginIdInput").on("input", function(){
+					
+				var loginId = $("#loginIdInput").val();
+				
+				$.ajax({
+					type:"get",
+					url:"/user/is_duplicate_id",
+					data:{"loginId":loginId},
+					success:function(data){
+						if(data.result == true){
+							$("#duplicateId").removeClass("d-none");
+						}else{
+							$("#noneDuplicateId").removeClass("d-none");
+							
+						}
+					},
+					error:function() {
+						alert("에러 발생");
+					}
+					
+				});
+				
+			});
+			
+		     var bannerList = ["https://img.appstory.co.kr/@files/monthly.appstory.co.kr/thum/Bdatafile/Board/dir_100/10045.jpg", "https://u7.uidownload.com/vector/355/925/vector-instagram-gradient-background-eps.jpg",
+		    	 "http://economychosun.com/query/upload/253/20180603141644_grakbuzv.jpg"];
+	         var currentImageIndex = 0;
+	         
+	            setInterval(function() {
+	                $("#img").attr("src", bannerList[currentImageIndex]);
+	                currentImageIndex++;
+
+	                if(currentImageIndex == bannerList.length) {
+	                    currentImageIndex = 0;
+	                }
+	            }, 1500); 
+			
 		});
+	
 	
 	</script>
 

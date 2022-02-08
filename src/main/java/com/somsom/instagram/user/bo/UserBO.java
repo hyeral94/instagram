@@ -20,6 +20,7 @@ public class UserBO {
 		return userDAO.insertUser(loginId, encPassword, name, email);
 	}
 	
+	//아이디 중복체크
 	public boolean isDuplicateId(String loginId) {
 		if(userDAO.selectDuplicateId(loginId) == 0) {
 			return false;
@@ -29,10 +30,10 @@ public class UserBO {
 
 	}
 	
-	public User signInUser(String loginId, String password) {
+	public User getUSer(String loginId, String password) {
 		
 		String encPassword = EncryptUtils.mb5(password);
 		
-		return userDAO.selectIdPassword(loginId, encPassword);
+		return userDAO.selectUser(loginId, encPassword);
 	}
 }
