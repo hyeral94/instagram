@@ -49,9 +49,9 @@ public class UserRestcontroller { //API 화면
 		Map<String, Boolean> result = new HashMap<>();
 		
 		if(userBO.isDuplicateId(loginId)) {
-			result.put("id_duplicate", true);
+			result.put("is_duplicate", true);
 		}else {
-			result.put("id_duplicate", false);
+			result.put("is_duplicate", false);
 		}
 		
 		return result;

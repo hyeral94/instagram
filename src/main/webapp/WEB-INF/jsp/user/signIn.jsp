@@ -13,6 +13,8 @@
 
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
 	<div class="d-flex mt-5">
@@ -32,7 +34,7 @@
 			</header>
 			<section class="text-center">
 				
-				<button type="button" class="btn form-control mt-3" id="facebook-login"><strong><h4>Facebook으로 로그인</h4></strong></button>
+				<button type="button" class="btn form-control mt-3" id="facebook-login"><strong><h4><i class="fa-brands fa-facebook-square" style="font-size: 25px;"></i>Facebook으로 로그인</h4></strong></button>
 				
 				<a class="text-secondary mt-5" style="text-decoration-line: none;">비밀번호를 잊으셨나요?</a>
 			</div>

@@ -68,3 +68,7 @@ header > #logo {
   border: 2px solid #D5D5D5;
   padding:30px
 }
+
+.mr-5 {
+	margin-right: 50px;
+}

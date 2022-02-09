@@ -8,7 +8,11 @@
 				<img width="50" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxODExMjRfMjcx%2FMDAxNTQzMDU0NzM0MjAx.39pqg0lYdA8WKpPjZEDU49hMMj3y1eHlZhRcwREuHn4g.tX6jV1TwgQsPuVNDTZA9-UD54nrEV90J1Wr-Pl_21fAg.JPEG.appcomo%2Fse3_image_1804520136.jpg&type=sc960_832">
 				<h3 class="mt-1">Instagram</h3>
 			</div>
-			<div class="col-6"></div>
+			<div class="col-6 text-end">		
+				<i class="fa-solid fa-border-all mt-3 mr-5" style="font-size: 25px;"></i>	
+				<i class="fa-solid fa-heart mt-3 mr-5" style="font-size: 25px;"></i>
+				<i class="fa-solid fa-magnifying-glass mt-3 mr-5" style="font-size: 25px;"></i>
+			</div>
 			
 			<c:choose>
 				<c:when test="${not empty userId }"> 

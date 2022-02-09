@@ -13,6 +13,9 @@
 
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 </head>
 <body>
 	<div class="d-flex mt-5">
@@ -24,17 +27,17 @@
 				<header>
 					<div><h1 class="text-center mt-3">Instagram</h1></div>
 					<div><h4 class="text-center text-secondary mt-3">친구들의 사진과 동영상을 보려면 가입하세요.</h4></div>
-					<div><button type="button" class="btn btn-primary form-control mt-3">Facebook으로 로그인</button></div>
+					<div><button type="button" class="btn btn-primary form-control mt-3"><i class="fa-brands fa-facebook-square" style="font-size: 20px;"></i>Facebook으로 로그인</button></div>
 				</header>
 				<hr>
 				<form id="signUpForm">
 						<input type="text" class="form-control" placeholder="사용자 이름" id="loginIdInput">
-							<div id="duplicateId" class="d-none"><small class="text-danger">중복된 ID 입니다.</small></div>
-							<div id="noneDuplicateId" class="d-none"><small class="text-success">사용 가능한 ID 입니다.</small></div>
+						<div id="duplicateId" class="d-none"><small class="text-danger">중복된 ID 입니다.</small></div>
+						<div id="noneDuplicateId" class="d-none"><small class="text-success">사용 가능한 ID 입니다.</small></div>
 						
 						<input type="text" class="form-control mt-3" placeholder="비밀번호" id="passwordInput">
 						<input type="text" class="form-control mt-3" placeholder="비밀번호 확인" id="passwordCkInput">
-							<small id="errorPassword" class="text-danger d-none">비밀번호가 일치하지 않습니다.</small>
+						<small id="errorPassword" class="text-danger d-none">비밀번호가 일치하지 않습니다.</small>
 						
 						<input type="text" class="form-control mt-3" placeholder="성명" id="nameInput">
 						<input type="text" class="form-control mt-3" placeholder="이메일 주소" id="emailInput">
@@ -57,9 +60,48 @@
 	
 	<script>
 		$(document).ready(function(){
-		
 			
-			$("#signUpForm").on("submit", function(){
+			$("#loginIdInput").on("input", function(){
+				
+				var loginId = $("#loginIdInput").val();
+
+				var isIdCheck = false;
+				var isDuplicateId = true;
+				
+				if(loginId == null || loginId == ""){
+					alert("사용자 이름을 입력하세요.");
+					return;
+				}
+				
+				$.ajax({
+					type:"get",
+					url:"/user/is_duplicate_id",
+					data:{"loginId":loginId},
+					success:function(data){
+						isIdCheck = true;
+						
+						if(data.is_duplicate){					
+							isDuplicateId = true;
+							$("#duplicateId").removeClass("d-none");
+							$("#noneDuplicateId").addClass("d-none");
+						}else{
+							isDuplicate = false;
+							$("#noneDuplicateId").removeClass("d-none");
+							$("#duplicateId").addClass("d-none");
+							
+						}
+					},
+					error:function() {
+						alert("에러 발생");
+					}
+					
+				});
+				
+			});
+			
+			$("#signUpForm").on("submit", function(e){
+				
+				e.preventDefault();
 				
 				var loginId = $("#loginIdInput").val();
 				var password = $("#passwordInput").val();
@@ -78,8 +120,8 @@
 				}
 				
 				if(password != passwordCheck){
-					alert("비밀번호가 일치하지 않습니다.");
-					return
+					$("#errorPassword").removeClass("d-none");
+					return;
 				}
 				
 				if(name == null || name == ""){
@@ -99,6 +141,7 @@
 					url:"/user/sign_up",
 					data:{"loginId":loginId, "password":password, "name":name, "email":email},
 					success:function(data) {
+	
 						if(data.result == "success"){
 							location.href="/user/signin_view";
 						}else{
@@ -110,30 +153,6 @@
 					}
 					
 				});
-			});
-			
-			$("#loginIdInput").on("input", function(){
-					
-				var loginId = $("#loginIdInput").val();
-				
-				$.ajax({
-					type:"get",
-					url:"/user/is_duplicate_id",
-					data:{"loginId":loginId},
-					success:function(data){
-						if(data.result == true){
-							$("#duplicateId").removeClass("d-none");
-						}else{
-							$("#noneDuplicateId").removeClass("d-none");
-							
-						}
-					},
-					error:function() {
-						alert("에러 발생");
-					}
-					
-				});
-				
 			});
 			
 		     var bannerList = ["https://img.appstory.co.kr/@files/monthly.appstory.co.kr/thum/Bdatafile/Board/dir_100/10045.jpg", "https://u7.uidownload.com/vector/355/925/vector-instagram-gradient-background-eps.jpg",

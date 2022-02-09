@@ -13,11 +13,13 @@
 
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
 
 	<div id="wrap">
-	
+
 		<c:import url ="/WEB-INF/jsp/include/logo.jsp" />
 		
 		<section>
@@ -29,6 +31,7 @@
 				<div class="d-flex justify-content-between">
 					<input type="file" class="mt-3" id="fileInput">
 					<button type="button" class="btn btn-small btn-primary mt-3" id="saveBtn">업로드</button>
+					
 				</div>
 
 			
@@ -36,9 +39,8 @@
 			<div id="content2"></div>
 		</section>
 		
-		<footer>
 			<c:import url ="/WEB-INF/jsp/include/footer.jsp" />
-		</footer>
+	
 	</div>
 	
 	
@@ -47,7 +49,7 @@
 
 			$("#saveBtn").on("click", function(){
 				
-				var content = $("#contentInput").val();
+				let content = $("#contentInput").val();
 				
 				if(content == null || content == "") {
 					alert("게시글에 내용을 입력하세요.");
