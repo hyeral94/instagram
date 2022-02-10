@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>      
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,29 +13,91 @@
 
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
 </head>
 <body>
+
 	<div id="wrap">
-	
+
 		<c:import url ="/WEB-INF/jsp/include/logo.jsp" />
 		
 		<section>
 			<div id="content2"></div>
 			<div id="content1">
-				
-				<c:import url ="/WEB-INF/jsp/include/write.jsp" />
-				
-				<c:import url ="/WEB-INF/jsp/include/profile.jsp" />
-			
+				<div class="border rounded bg-white mt-3">
+					<div>
+						<textarea class="form-control w-100 border-0 non-resize" style="border: none" rows="4" cols="3" placeholder="내용을 입력하세요." id="contentInput"></textarea>
+					</div>
+									
+					<div class="d-flex justify-content-between">
+						<span class="img-icon"> <i class="bi bi-image" id="imgBtn"></i></span>
+						<input type="file" id="fileInput" class="d-none">
+						<button type="button" class="btn btn-small btn-primary" id="saveBtn">업로드</button>					
+					</div>
+				</div>
 			</div>
 			<div id="content2"></div>
 		</section>
 		
-		<footer>
 			<c:import url ="/WEB-INF/jsp/include/footer.jsp" />
-		</footer>
+	
 	</div>
 	
-
+	
+	<script>
+		$(document).ready(function(){
+			
+			$("#imgBtn").on("click", function() {
+				// fileInput 클릭 효과
+				$("#fileInput").click();
+				
+			});
+			
+			$("#saveBtn").on("click", function(){
+				
+				let content = $("#contentInput").val().trim();
+				
+				if(content == "") {
+					alert("게시글에 내용을 입력하세요.");
+					return;
+				}
+				
+				// 파일 유효성 검사
+				if($("#fileInput")[0].files.length == 0) {
+					alert("파일을 선택해주세요");
+					return;
+				}
+			
+				var formData = new FormData();
+				formData.append("content", content);
+				formData.append("file", $("#fileInput")[0].files[0]);
+				
+			
+				$.ajax({
+					type:"post",
+					url:"/post/create",
+					data:formData,
+					enctype:"multipart/form-data", 
+					processData:false, 
+					contentType:false, 
+					success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						}else {
+							alert("글쓰기 실패");
+						}
+					},
+					error:function() {
+						alert("에러 발생");
+					}
+					
+				});
+			});
+			
+	
+		});
+	
+	</script>
 </body>
 </html>

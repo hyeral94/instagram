@@ -17,11 +17,11 @@ public class PostBO {
 	@Autowired
 	private PostDAO postDAO;
 	
-	public int addPost(int userId, String content, MultipartFile file) {
+	public int addPost(int userId, String userName, String content, MultipartFile file) {
 
 		String filePath = FileManagerService.saveFile(userId, file);
 		
-		return postDAO.insertPost(userId, content, filePath);
+		return postDAO.insertPost(userId, userName, content, filePath);
 	}
 	
 	public List<Post> getPostList(int userId){

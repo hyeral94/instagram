@@ -20,17 +20,12 @@ public class PostController {
 	
 	@Autowired
 	private PostBO postBO;
-
+	
 	@GetMapping("/timeline_view")
 	public String timelineView() {
 		return "post/timeline";
 	}
-	
-	@GetMapping("/create_view")
-	public String createView() {
-		return "post/create";
-	}
-	
+
 	@GetMapping("/createList_view")
 	public String createListView(HttpServletRequest request,
 			Model model) {

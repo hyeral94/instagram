@@ -35,8 +35,8 @@
 						<div id="duplicateId" class="d-none"><small class="text-danger">중복된 ID 입니다.</small></div>
 						<div id="noneDuplicateId" class="d-none"><small class="text-success">사용 가능한 ID 입니다.</small></div>
 						
-						<input type="text" class="form-control mt-3" placeholder="비밀번호" id="passwordInput">
-						<input type="text" class="form-control mt-3" placeholder="비밀번호 확인" id="passwordCkInput">
+						<input type="password" class="form-control mt-3" placeholder="비밀번호" id="passwordInput">
+						<input type="password" class="form-control mt-3" placeholder="비밀번호 확인" id="passwordCkInput">
 						<small id="errorPassword" class="text-danger d-none">비밀번호가 일치하지 않습니다.</small>
 						
 						<input type="text" class="form-control mt-3" placeholder="성명" id="nameInput">

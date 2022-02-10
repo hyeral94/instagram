@@ -27,7 +27,7 @@
 			<header>
 				<div><h1 class="text-center mt-3">Instagram</h1></div>
 				<input type="text" class="form-control mt-5" placeholder="사용자 이름 또는 이메일 주소" id="loginIdInput">
-				<input type="text" class="form-control mt-3" placeholder="비밀번호" id="passwordInput">
+				<input type="password" class="form-control mt-3" placeholder="비밀번호" id="passwordInput">
 				
 				<button type="button" class="btn form-control mt-3 text-white" id="login-btn">로그인</button>
 				<hr>
@@ -73,7 +73,7 @@
 					data:{"loginId":loginId, "password":password},
 					success:function(data){
 						if(data.result == "success"){
-							location.href="/post/timeline_view"
+							location.href="/post/create_view";
 						}else {
 							alert("아이디 또는 비밀번호를 입력하세요.");
 						}

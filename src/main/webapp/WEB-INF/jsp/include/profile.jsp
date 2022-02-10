@@ -7,7 +7,7 @@
 					<img width="50" class="mt-2" src="https://png.pngtree.com/png-vector/20191009/ourmid/pngtree-user-icon-png-image_1796659.jpg">
 					<c:choose>
 					<c:when test="${not empty userId }"> 
-						<div class="mr-3 mt-3"><h4>${userLoginId }</h4></div>
+						<div class="mr-3 mt-4"><strong>${userLoginId }</strong></div>
 					</c:when>
 					</c:choose>
 					</div>

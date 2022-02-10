@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,10 +19,23 @@
 	
 		<c:import url ="/WEB-INF/jsp/include/logo.jsp" />
 		
+		<section>
+			<div id="content2"></div>
+			<div id="content1">
+				
+				<c:import url ="/WEB-INF/jsp/include/write.jsp" />
+				
+				<c:import url ="/WEB-INF/jsp/include/profile.jsp" />
+			
+			</div>
+			<div id="content2"></div>
+		</section>
+		
+		
 		<c:import url ="/WEB-INF/jsp/include/footer.jsp" />
-	<i class="fa-solid fa-ellipsis"></i>
-	
+		
 	</div>
+	
 
 </body>
 </html>
