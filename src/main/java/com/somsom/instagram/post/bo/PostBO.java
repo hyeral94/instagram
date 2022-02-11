@@ -24,8 +24,8 @@ public class PostBO {
 		return postDAO.insertPost(userId, userName, content, filePath);
 	}
 	
-	public List<Post> getPostList(int userId){
-		return postDAO.selectPostList(userId);
+	public List<Post> getPostList(){
+		return postDAO.selectPostList();
 		
 	}
 }

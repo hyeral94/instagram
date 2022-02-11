@@ -26,8 +26,7 @@
  		)
 	</insert>
 	
-	 <select id="selectPostList" parameterType="int" 
- 	resultType="com.somsom.instagram.post.model.Post">
+	 <select id="selectPostList" resultType="com.somsom.instagram.post.model.Post">
  		SELECT 
  			`id`
  			, `userId`
@@ -39,9 +38,7 @@
  		
  		FROM
  			`post`
- 		WHERE 
- 			`userId` = #{userId}
- 			ORDER BY `id` DESC;	
+		ORDER BY `id` DESC;	
  	
  	</select>
 </mapper>

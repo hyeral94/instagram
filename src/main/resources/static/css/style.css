@@ -73,27 +73,6 @@ header > #logo {
 	margin-right: 50px;
 }
 
-.accordion {
-	background-color: #ffffff;
-    cursor: pointer;
-    padding: 16px;
-    width: 100%;
-    outline: none;
-    border: none;
-    text-align: left;
-    font-size: 16px;
-    transition: 0.4s;
-}
-
-.panel {
-    padding: 0 16px;
-    background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-    border-bottom: 1px solid #eeeeee;
-}
-
 .img-icon {
 	font-size:30px;
 }

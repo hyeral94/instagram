@@ -2,9 +2,6 @@ package com.somsom.instagram.post;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,19 +19,14 @@ public class PostController {
 	private PostBO postBO;
 	
 	@GetMapping("/timeline_view")
-	public String timelineView() {
+	public String timelineView(Model model) {
+		
+		List<Post> postList = postBO.getPostList();
+		
+		model.addAttribute("postList", postList);
+		
 		return "post/timeline";
 	}
 
-	@GetMapping("/createList_view")
-	public String createListView(HttpServletRequest request,
-			Model model) {
-		
-		HttpSession session = request.getSession();
-		int userId = (Integer)session.getAttribute("userId");
-		
-		List<Post> postlist = postBO.getPostList(userId);
-		model.addAttribute("postList", postlist);
-		return "post/createList";
-	}
+
 }

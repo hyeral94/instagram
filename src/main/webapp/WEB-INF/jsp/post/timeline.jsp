@@ -33,13 +33,65 @@
 					<div class="d-flex justify-content-between">
 						<span class="img-icon"> <i class="bi bi-image" id="imgBtn"></i></span>
 						<input type="file" id="fileInput" class="d-none">
-						<button type="button" class="btn btn-small btn-primary" id="saveBtn">업로드</button>					
+						<button type="button" class="btn btn-small btn-primary" id="uploadBtn">업로드</button>					
 					</div>
 				</div>
-			</div>
+				
+			<c:forEach var="post" items="${postList }" >
+				<!-- 피드 -->
+				<div class="mt-3 border rounded bg-white">
+					<!-- 타이틀 -->
+					<div class="p-2 border-bottom">
+						<div class="d-flex justify-content-between">
+							<div class="d-flex">
+								<i class="bi bi-person-circle" style="font-size:30px;"></i>
+								<c:choose>
+								<c:when test="${not empty userId }"> 
+								<div class="m-1 mt-3"><strong>${userLoginId }</strong></div>
+								</c:when>
+								</c:choose>
+							</div>
+							<div>
+								<a class="text-dark" href="#">
+									<i class="bi bi-three-dots mt-3"></i>
+								</a>
+							</div>	
+						</div>	
+						
+						<!-- 이미지 -->
+						<div class="mt-1">
+							<img src="${post.imagePath }" >
+						</div>
+								
+						<!-- 좋아요 -->
+						<div>
+							<i class="bi bi-heart btn" style="font-size: 20px;"></i>
+							좋아요 5개
+						</div>
+								
+								
+						<!-- content -->
+						<div>
+							<b>"${post.userName }</b>
+						</div>			
+						
+							
+						<!-- 댓글 -->
+						
+						<!-- 댓글입력 -->
+						<div class="d-flex border-top">
+							<input type="text" class="form-control border-0" id="commentInput${post.id }">
+							<button class="commentBtn btn btn-primary text-white" data-post-id="${post.id }">게시</button>
+						</div>
+						
+					</div>			
+				</div>
+			</c:forEach>
+			
 			<div id="content2"></div>
 		</section>
 		
+	
 			<c:import url ="/WEB-INF/jsp/include/footer.jsp" />
 	
 	</div>
@@ -54,7 +106,7 @@
 				
 			});
 			
-			$("#saveBtn").on("click", function(){
+			$("#uploadBtn").on("click", function(){
 				
 				let content = $("#contentInput").val().trim();
 				
@@ -62,7 +114,7 @@
 					alert("게시글에 내용을 입력하세요.");
 					return;
 				}
-				
+
 				// 파일 유효성 검사
 				if($("#fileInput")[0].files.length == 0) {
 					alert("파일을 선택해주세요");
@@ -84,6 +136,7 @@
 					success:function(data) {
 						if(data.result == "success") {
 							location.reload();
+							$("postList").removeClass("d-none");
 						}else {
 							alert("글쓰기 실패");
 						}
@@ -95,7 +148,29 @@
 				});
 			});
 			
-	
+			$(".commentBtn").on("click", function(){
+				// postId, content 전달
+				let postId = $(this).data("post-id");
+				let content = $("#commentInput" + postId).val();
+				
+				$.ajax({
+					type:"post",
+					url:"/post/comment/create",
+					data:{"postId":postId, "content":content},
+					success:function(data) {
+						if(data.result == "success"){
+							location.reload();
+						}else{
+							alert("댓글 작성 실패");
+						}
+					}, 
+					error:function() {
+						alert("에러 발생");
+					}
+				});
+				
+				
+			});
 		});
 	
 	</script>

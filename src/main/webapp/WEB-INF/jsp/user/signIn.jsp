@@ -73,7 +73,7 @@
 					data:{"loginId":loginId, "password":password},
 					success:function(data){
 						if(data.result == "success"){
-							location.href="/post/create_view";
+							location.href="/post/timeline_view";
 						}else {
 							alert("아이디 또는 비밀번호를 입력하세요.");
 						}

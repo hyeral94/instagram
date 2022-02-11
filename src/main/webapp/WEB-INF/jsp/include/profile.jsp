@@ -4,11 +4,11 @@
 <!DOCTYPE html>
 				<div class="mt-3">
 					<div id="profile" class="d-flex ml-3">
-					<img width="50" class="mt-2" src="https://png.pngtree.com/png-vector/20191009/ourmid/pngtree-user-icon-png-image_1796659.jpg">
-					<c:choose>
-					<c:when test="${not empty userId }"> 
-						<div class="mr-3 mt-4"><strong>${userLoginId }</strong></div>
-					</c:when>
+						<i class="bi bi-person-circle" style="font-size:30px;"></i>
+						<c:choose>
+						<c:when test="${not empty userId }"> 
+							<div class="mr-3 mt-4"><strong>${userLoginId }</strong></div>
+						</c:when>
 					</c:choose>
 					</div>
 					
