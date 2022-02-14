@@ -72,34 +72,16 @@
 					<!--  댓글 -->
 					
 					<div class="mt-2">
-						<div class=" border-bottom m-2">
+						<div class="border-bottom m-2">
 							<!-- 댓글 타이틀 -->
-							<div  class="middle-size">
-								댓글
-							</div>
+							<div>댓글</div>
 						</div>
-						
-						<!--  댓글  -->
-						<div class="middle-size m-2">
-						
-							<div class="mt-1">
-								<b>김바다</b> 어쩌라고
-							</div>
-							
-							<div class="mt-1">
-								<b>온조</b> 킹정 나도 봤음
-							</div>
-							
-							<div class="mt-1">
-								<b>남라</b> 징그러워서 못봄 ㅠㅠ
-							</div>
-						</div>
-						<!--  댓글  -->
+				
 						
 						<!-- 댓글 입력 -->
 						<div class="d-flex mt-2 border-top">
 							<input type="text" class="form-control border-0">
-							<button class="btn btn-primary ml-2 commentBtn">게시</button>
+							<button class="btn btn-primary commentBtn">게시</button>
 						</div>
 						<!-- 댓글 입력 -->
 					</div>
