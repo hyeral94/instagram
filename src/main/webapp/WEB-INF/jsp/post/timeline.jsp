@@ -17,19 +17,17 @@
 
 </head>
 <body>
-
-	<div id="wrap">
-
+	<div id="wrap" >
 		<c:import url ="/WEB-INF/jsp/include/logo.jsp" />
-		
-		<section>
-			<div id="content2"></div>
-			<div id="content1">
-				<div class="border rounded bg-white mt-3">
+		<section class="d-flex justify-content-center">
+			<div class="col-6">
+				
+				<!--  입력 상자  -->
+				<div class="border rounded mt-3  bg-white">
 					<div>
 						<textarea class="form-control w-100 border-0 non-resize" style="border: none" rows="4" cols="3" placeholder="내용을 입력하세요." id="contentInput"></textarea>
 					</div>
-									
+										
 					<div class="d-flex justify-content-between">
 						<span class="img-icon"> <i class="bi bi-image" id="imgBtn"></i></span>
 						<input type="file" id="fileInput" class="d-none">
@@ -37,66 +35,82 @@
 					</div>
 				</div>
 				
-			<c:forEach var="post" items="${postList }" >
-				<!-- 피드 -->
-				<div class="mt-3 border rounded bg-white">
+				<c:forEach var="post" items="${postList }" >
+				<!--  피드  -->
+				<div class="card border rounded mt-3">
 					<!-- 타이틀 -->
-					<div class="p-2 border-bottom">
-						<div class="d-flex justify-content-between">
-							<div class="d-flex">
-								<i class="bi bi-person-circle" style="font-size:30px;"></i>
-								<c:choose>
-								<c:when test="${not empty userId }"> 
-								<div class="m-1 mt-3"><strong>${userLoginId }</strong></div>
-								</c:when>
-								</c:choose>
-							</div>
-							<div>
-								<a class="text-dark" href="#">
-									<i class="bi bi-three-dots mt-3"></i>
-								</a>
-							</div>	
+					<div class="d-flex justify-content-between p-2 border-bottom">
+						<div class="d-flex">
+							<i class="bi bi-person-circle" style="font-size:30px;"></i>
+							<div class="m-2 mt-3">${post.userName }</div>
+						</div>
+						<div>	
+							<a class="text-dark" href="#">
+								<i class="bi bi-three-dots mt-3"></i>
+							</a>
 						</div>	
-						
-						<!-- 이미지 -->
-						<div class="mt-1">
-							<img src="${post.imagePath }" >
-						</div>
-								
-						<!-- 좋아요 -->
-						<div>
+					</div>
+					<!--이미지 -->
+					<div>
+						<img src="${post.imagePath }" class="imageClick w-100">
+					</div>
+					
+					<!-- 좋아요 -->
+					<div>
+						<a href="#" class="likeBtn">
 							<i class="bi bi-heart btn" style="font-size: 20px;"></i>
-							좋아요 5개
-						</div>
-								
-								
-						<!-- content -->
-						<div>
-							<b>"${post.userName }</b>
-						</div>			
-						
-							
-						<!-- 댓글 -->
-						
-						<!-- 댓글입력 -->
-						<div class="d-flex border-top">
-							<input type="text" class="form-control border-0" id="commentInput${post.id }">
-							<button class="commentBtn btn btn-primary text-white" data-post-id="${post.id }">게시</button>
-						</div>
-						
+						</a>	
+						<span class="middle-size ml-1"> 좋아요 5개 </span>
+					</div>	
+					
+					<!--  content -->
+					<div class="middle-size m-2">
+							<b>${post.userName }</b>${post.content }
 					</div>			
+	
+					
+					<!--  댓글 -->
+					
+					<div class="mt-2">
+						<div class=" border-bottom m-2">
+							<!-- 댓글 타이틀 -->
+							<div  class="middle-size">
+								댓글
+							</div>
+						</div>
+						
+						<!--  댓글  -->
+						<div class="middle-size m-2">
+						
+							<div class="mt-1">
+								<b>김바다</b> 어쩌라고
+							</div>
+							
+							<div class="mt-1">
+								<b>온조</b> 킹정 나도 봤음
+							</div>
+							
+							<div class="mt-1">
+								<b>남라</b> 징그러워서 못봄 ㅠㅠ
+							</div>
+						</div>
+						<!--  댓글  -->
+						
+						<!-- 댓글 입력 -->
+						<div class="d-flex mt-2 border-top">
+							<input type="text" class="form-control border-0">
+							<button class="btn btn-primary ml-2 commentBtn">게시</button>
+						</div>
+						<!-- 댓글 입력 -->
+					</div>
+					<!--  댓글 -->
 				</div>
-			</c:forEach>
-			
-			<div id="content2"></div>
+				</c:forEach>
+						
+			</div>	
 		</section>
-		
-	
-			<c:import url ="/WEB-INF/jsp/include/footer.jsp" />
-	
+		<c:import url ="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
-	
-	
 	<script>
 		$(document).ready(function(){
 			
