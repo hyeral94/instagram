@@ -35,37 +35,47 @@
 					</div>
 				</div>
 				
-				<c:forEach var="post" items="${postList }" >
+				<c:forEach var="postDetail" items="${postList }" >
 				<!--  피드  -->
 				<div class="card border rounded mt-3">
 					<!-- 타이틀 -->
 					<div class="d-flex justify-content-between p-2 border-bottom">
 						<div class="d-flex">
 							<i class="bi bi-person-circle" style="font-size:30px;"></i>
-							<div class="m-2 mt-3">${post.userName }</div>
+							<div class="m-2 mt-3">${postDetail.post.userName }</div>
 						</div>
 						<div>	
-							<a class="text-dark" href="#">
-								<i class="bi bi-three-dots mt-3"></i>
+							<a class="text-dark moreBtn mt-5" href="#">
+								<div class="mt-3"><i class="bi bi-three-dots"></i></div>
 							</a>
 						</div>	
 					</div>
 					<!--이미지 -->
 					<div>
-						<img src="${post.imagePath }" class="imageClick w-100">
+						<img src="${postDetail.post.imagePath }" class="imageClick w-100">
 					</div>
 					
 					<!-- 좋아요 -->
 					<div>
-						<a href="#" class="likeBtn">
+						
+						<a href="#" class="likeBtn" data-post-id="${postDetail.post.postId }">
+							<c:choose>
+								<c:when test="${postDetail.like }">
+								</c:when>
+								<c:otherwise>
+								</c:otherwise>
+							</c:choose>
+							
 							<i class="bi bi-heart btn" style="font-size: 20px;"></i>
+							${postDetail.like }
 						</a>	
-						<span class="middle-size ml-1"> 좋아요 5개 </span>
+						
+						<span class="middle-size ml-1"> 좋아요 ${postDetail.likeCount }개</span>
 					</div>	
 					
 					<!--  content -->
 					<div class="middle-size m-2">
-							<b>${post.userName }</b>${post.content }
+							<b>${postDetail.post.userName }</b>${postDetail.post.content }
 					</div>			
 	
 					
@@ -76,7 +86,9 @@
 							<!-- 댓글 타이틀 -->
 							<div>댓글</div>
 						</div>
-				
+						<c:forEach var="comment" items="${postDetail.comentList }">
+							<b>${comment.userName }</b>${coment.content }
+						</c:forEach>
 						
 						<!-- 댓글 입력 -->
 						<div class="d-flex mt-2 border-top">
@@ -165,6 +177,27 @@
 					}
 				});
 				
+				$(".likeBtn").on("click", function(){
+					let postId = $(this).data("post-id");
+					
+					$.ajax({
+						type:"get",
+						url:"/post/like",
+						data:{"postId":postId},
+						success:function(data){
+							if(data.result == "success"){
+								location.reload();
+							}else {
+								alert("좋아요 실패");
+							}
+						},
+						error:function() {
+							alert("에러 발생");
+						}
+						
+					});
+					
+				});
 				
 			});
 		});

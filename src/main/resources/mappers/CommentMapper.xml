@@ -24,4 +24,20 @@
 			, now()
 		)
 	</insert>
+	<select id="selectCommentList" parameterType="int" 
+	resultType="com.somsom.instagram.post.comment.model.Comment">
+		SELECT 
+			`id`
+			, `postId`
+			, `userId`
+			, `userName`
+			, `content`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`comment`
+		WHERE
+			`postId` = #{postId}
+	
+	</select>
 </mapper>
