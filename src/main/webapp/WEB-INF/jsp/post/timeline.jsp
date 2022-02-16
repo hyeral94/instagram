@@ -31,6 +31,7 @@
 					<div class="d-flex justify-content-between">
 						<span class="img-icon"> <i class="bi bi-image" id="imgBtn"></i></span>
 						<input type="file" id="fileInput" class="d-none">
+						
 						<button type="button" class="btn btn-small btn-primary" id="uploadBtn">업로드</button>					
 					</div>
 				</div>
@@ -40,12 +41,14 @@
 				<div class="card border rounded mt-3">
 					<!-- 타이틀 -->
 					<div class="d-flex justify-content-between p-2 border-bottom">
+					
 						<div class="d-flex">
 							<i class="bi bi-person-circle" style="font-size:30px;"></i>
 							<div class="m-2 mt-3">${postDetail.post.userName }</div>
 						</div>
+						
 						<div>	
-							<a class="text-dark moreBtn mt-5" href="#">
+							<a class="text-dark moreBtn mt-5" href="#" data-toggle="modal" data-target="#exampleModalCenter">
 								<div class="mt-3"><i class="bi bi-three-dots"></i></div>
 							</a>
 						</div>	
@@ -57,25 +60,28 @@
 					
 					<!-- 좋아요 -->
 					<div>
-						
-						<a href="#" class="likeBtn" data-post-id="${postDetail.post.postId }">
+						<a href="#" class="likeBtn" data-post-id="${postDetail.post.id }">
 							<c:choose>
 								<c:when test="${postDetail.like }">
+								
+									<i class="bi bi-heart-fill btn text-danger" style="font-size: 20px;"></i>
+									
 								</c:when>
+								
 								<c:otherwise>
+									
+									<i class="bi bi-heart btn text-dark" style="font-size: 20px;"></i>
+									
 								</c:otherwise>
 							</c:choose>
-							
-							<i class="bi bi-heart btn" style="font-size: 20px;"></i>
-							${postDetail.like }
-						</a>	
-						
-						<span class="middle-size ml-1"> 좋아요 ${postDetail.likeCount }개</span>
+						</a>
+		
+						<span class="middle-size ml-1"> 좋아요 ${postDetail.likeCount }개 </span>
 					</div>	
 					
 					<!--  content -->
 					<div class="middle-size m-2">
-							<b>${postDetail.post.userName }</b>${postDetail.post.content }
+							<b>${postDetail.post.userName }</b> ${postDetail.post.content }
 					</div>			
 	
 					
@@ -86,18 +92,28 @@
 							<!-- 댓글 타이틀 -->
 							<div>댓글</div>
 						</div>
-						<c:forEach var="comment" items="${postDetail.comentList }">
-							<b>${comment.userName }</b>${coment.content }
-						</c:forEach>
+						
+						<!--  댓글 -->
+						<div class="middle-size m-2">
+							<c:forEach var="comment" items="${postDetail.commentList }">
+							<div class="mt-1">
+								<b>${comment.userName }</b> ${comment.content }
+							</div>
+							</c:forEach>
+							
+						</div>
+						<!--  댓글 -->
 						
 						<!-- 댓글 입력 -->
 						<div class="d-flex mt-2 border-top">
-							<input type="text" class="form-control border-0">
-							<button class="btn btn-primary commentBtn">게시</button>
+							<input type="text" class="form-control border-0" id="commentInput${postDetail.post.id }">
+							<button class="btn btn-primary commentBtn" data-post-id="${postDetail.post.id }">게시</button>
 						</div>
 						<!-- 댓글 입력 -->
+						
 					</div>
 					<!--  댓글 -->
+					
 				</div>
 				</c:forEach>
 						
@@ -105,6 +121,21 @@
 		</section>
 		<c:import url ="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      
+	      <div class="modal-body text-center">
+	        삭제하기
+	      </div>
+	      
+	    </div>
+	  </div>
+	</div>
+	
+	
 	<script>
 		$(document).ready(function(){
 			
@@ -167,40 +198,72 @@
 					data:{"postId":postId, "content":content},
 					success:function(data) {
 						if(data.result == "success"){
+							
 							location.reload();
+							
 						}else{
 							alert("댓글 작성 실패");
 						}
 					}, 
 					error:function() {
-						alert("에러 발생");
+						alert("댓글 작성 에러 발생");
 					}
 				});
+			});	
 				
-				$(".likeBtn").on("click", function(){
+				$(".likeBtn").on("click", function(e) {
+
+					e.preventDefault(); //고유의 기능을 없앰.
+					
 					let postId = $(this).data("post-id");
 					
 					$.ajax({
 						type:"get",
 						url:"/post/like",
 						data:{"postId":postId},
-						success:function(data){
-							if(data.result == "success"){
-								location.reload();
-							}else {
-								alert("좋아요 실패");
-							}
-						},
+						success:function(data) {
+							
+							location.reload();
+							
+							
+						}, 
 						error:function() {
-							alert("에러 발생");
+							
+							alert("좋아요 에러");
 						}
 						
 					});
 					
 				});
-				
+					
+				$(".unlikeBtn").on("click", function(e) {
+					
+					e.preventDefault();
+					
+					let postId = $(this).data("post-id");
+					
+					$.ajax({
+						type:"get",
+						url:"/post/unlike",
+						data:{"postId":postId},
+						success:function(data) {
+							
+							if(data.result == "success") {
+								
+								location.reload();
+								
+							} else {
+								alert("좋아요 취소 실패");
+							}
+							
+						}, 
+						error:function() {
+							alert("좋아요 취소 에러");
+						}
+						
+					});
+				});
 			});
-		});
 	
 	</script>
 </body>

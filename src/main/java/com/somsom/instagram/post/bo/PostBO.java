@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.somsom.instagram.common.FileManagerService;
-import com.somsom.instagram.like.bo.LikeBO;
 import com.somsom.instagram.post.comment.bo.CommentBO;
 import com.somsom.instagram.post.comment.model.Comment;
 import com.somsom.instagram.post.dao.PostDAO;
+import com.somsom.instagram.post.like.bo.LikeBO;
 import com.somsom.instagram.post.model.Post;
 import com.somsom.instagram.post.model.PostDetail;
 

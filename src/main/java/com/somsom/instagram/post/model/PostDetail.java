@@ -29,6 +29,12 @@ public class PostDetail {
 	public void setLikeCount(int likeCount) {
 		this.likeCount = likeCount;
 	}
+	public boolean isLike() {
+		return isLike;
+	}
+	public void setLike(boolean isLike) {
+		this.isLike = isLike;
+	}
 	
 	
 }
