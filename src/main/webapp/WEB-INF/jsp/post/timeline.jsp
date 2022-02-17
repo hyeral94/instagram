@@ -17,7 +17,7 @@
 
 </head>
 <body>
-	<div id="wrap" >
+<div id="wrap" >
 		<c:import url ="/WEB-INF/jsp/include/logo.jsp" />
 		<section class="d-flex justify-content-center">
 			<div class="col-6">
@@ -39,6 +39,7 @@
 				<c:forEach var="postDetail" items="${postList }" >
 				<!--  피드  -->
 				<div class="card border rounded mt-3">
+				
 					<!-- 타이틀 -->
 					<div class="d-flex justify-content-between p-2 border-bottom">
 					
@@ -46,13 +47,14 @@
 							<i class="bi bi-person-circle" style="font-size:30px;"></i>
 							<div class="m-2 mt-3">${postDetail.post.userName }</div>
 						</div>
-						
-						<div>	
-							<a class="text-dark moreBtn mt-5" href="#" data-toggle="modal" data-target="#exampleModalCenter">
+			
+						<div class="more-icon">	
+							<a class="text-dark moreBtn mt-5" data-post-id="${postDetail.post.id }" href="#" data-toggle="modal" data-target="#exampleModalCenter">
 								<div class="mt-3"><i class="bi bi-three-dots"></i></div>
 							</a>
 						</div>	
 					</div>
+					
 					<!--이미지 -->
 					<div>
 						<img src="${postDetail.post.imagePath }" class="imageClick w-100">
@@ -114,6 +116,7 @@
 					</div>
 					<!--  댓글 -->
 					
+					
 				</div>
 				</c:forEach>
 						
@@ -128,12 +131,13 @@
 	    <div class="modal-content">
 	      
 	      <div class="modal-body text-center">
-	        삭제하기
+	        <a href="#" id="deleteBtn"> 삭제하기 </a>
 	      </div>
 	      
 	    </div>
 	  </div>
 	</div>
+
 	
 	
 	<script>
@@ -145,7 +149,7 @@
 				
 			});
 			
-			$("#uploadBtn").on("click", function(){
+			$("#uploadBtn").on("click", function() {
 				
 				let content = $("#contentInput").val().trim();
 				
@@ -261,6 +265,41 @@
 							alert("좋아요 취소 에러");
 						}
 						
+					});
+					
+					$(".moreBtn").on("click", function(e){
+						
+						e.preventDefault();
+						
+						let postId = $(this).data("post-id");
+						
+						// postId를 모달에 삭제하기 버튼에 값을 부여한다.
+						$("#deleteBtn").data("post-id", postId);//moreBtn 클릭하는 순간 deleteBtn에 postid를 부여
+						
+					});
+					
+					$("#deleteBtn").on("click", function(e){
+						e.preventDefault();
+						
+						let postId = $(this).data("post-id");
+
+
+						$.ajax({
+							type:"get",
+							url:"/post/delete",
+							data:{"postId":postId},
+							success:function(data) {
+								if(data.result == "success"){
+									location.reload();
+								}else {
+								 	alert("삭제 실패");
+								}
+								
+							},
+							error:function() {
+								alert("삭제 에러");
+							}
+						});
 					});
 				});
 			});

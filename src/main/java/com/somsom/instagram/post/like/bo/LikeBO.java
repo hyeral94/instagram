@@ -51,5 +51,9 @@ public class LikeBO {
 		// or return !(likeDAO.selectLikeCountByUserId(postId, userId) == 0);
 	}
 	
+	public int deleteLikeByPostId(int postId) {
+		return likeDAO.deleteLikeByPostId(postId);
+	}
+	
 	
 }
