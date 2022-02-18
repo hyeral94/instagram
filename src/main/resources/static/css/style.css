@@ -53,26 +53,14 @@ header > #logo {
 	
 }
 
-#content1 {
-	width:800px;
-	margin:auto;
-}
-
-#content2 {
-	width:200px;
-	margin:auto;
-}
-
-#content-border {
-    background-color: white;
-    border: 2px solid #D5D5D5;
-    padding:30px
-}
-
 .mr-5 {
 	margin-right: 50px;
 }
 
 .img-icon {
 	font-size:30px;
+}
+
+.comment:hover {
+	background-color:#F6F6F6;
 }

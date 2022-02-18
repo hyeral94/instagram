@@ -41,28 +41,27 @@
 		ORDER BY `id` DESC;	 	
  	</select>
  	
- 	<delete id="deletePost" parameterType="int">
- 		DELETE FROM
- 			`post`
- 		WHERE
- 			`id` = #{postId}	
- 	</delete>
+	<delete id="deletePost" parameterType="int">
+		DELETE FROM
+			`post`
+		WHERE
+			`id` = #{postId}
+	</delete>
  	
- 	<select id="selectPost" parameterType="int"
- 	resultType="com.somsom.instagram.post.model.Post">
- 		SELECT 
- 			`id`
- 			, `userId`
+	<select id="selectPost" parameterType="int" 
+	resultType="com.somsom.instagram.post.model.Post">
+		SELECT 
+			`id`
+			, `userId`
  			, `userName`
  			, `content`
  			, `imagePath`
  			, `createdAt`
  			, `updatedAt`
- 		
- 		FROM
- 			`post`
+		FROM
+			`post`
 		WHERE
 			`id` = #{postId}
- 	</select>
+	</select>
 
 </mapper>

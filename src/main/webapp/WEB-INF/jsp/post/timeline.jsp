@@ -7,13 +7,15 @@
 <meta charset="UTF-8">
 <title>Instagram</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<link rel="stylesheet" href="/static/css/style.css" type="text/css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  	
+  	
+  	<link rel="stylesheet" href="/static/css/style.css">
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 </head>
 <body>
@@ -42,17 +44,16 @@
 				
 					<!-- 타이틀 -->
 					<div class="d-flex justify-content-between p-2 border-bottom">
-					
 						<div class="d-flex">
 							<i class="bi bi-person-circle" style="font-size:30px;"></i>
 							<div class="m-2 mt-3">${postDetail.post.userName }</div>
 						</div>
-			
-						<div class="more-icon">	
-							<a class="text-dark moreBtn mt-5" data-post-id="${postDetail.post.id }" href="#" data-toggle="modal" data-target="#exampleModalCenter">
-								<div class="mt-3"><i class="bi bi-three-dots"></i></div>
+						
+						<div class="more-icon" >
+							<a class="text-dark moreBtn mt-5" data-post-id="${postDetail.post.id }" href="#" data-toggle="modal" data-target="#exampleModalCenter"> 
+								<div class="mt-3"> <i class="bi bi-three-dots"></i> </div>
 							</a>
-						</div>	
+						</div>
 					</div>
 					
 					<!--이미지 -->
@@ -98,7 +99,7 @@
 						<!--  댓글 -->
 						<div class="middle-size m-2">
 							<c:forEach var="comment" items="${postDetail.commentList }">
-							<div class="mt-1">
+							<div class="mt-1 comment">
 								<b>${comment.userName }</b> ${comment.content }
 							</div>
 							</c:forEach>
@@ -129,6 +130,10 @@
 	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	  <div class="modal-dialog modal-dialog-centered" role="document">
 	    <div class="modal-content">
+	      	      
+	      <div class="modal-body text-center">
+	        <a href="#" id="correctBtn"> 수정하기 </a>
+	      </div>
 	      
 	      <div class="modal-body text-center">
 	        <a href="#" id="deleteBtn"> 삭제하기 </a>
@@ -266,6 +271,7 @@
 						}
 						
 					});
+				});
 					
 					$(".moreBtn").on("click", function(e){
 						
@@ -278,30 +284,33 @@
 						
 					});
 					
-					$("#deleteBtn").on("click", function(e){
+					
+					$("#deleteBtn").on("click", function(e) {
 						e.preventDefault();
 						
 						let postId = $(this).data("post-id");
-
-
+						
 						$.ajax({
 							type:"get",
 							url:"/post/delete",
 							data:{"postId":postId},
 							success:function(data) {
-								if(data.result == "success"){
+								if(data.result == "success") {
 									location.reload();
-								}else {
-								 	alert("삭제 실패");
+								} else {
+									alert("삭제 실패!");
 								}
 								
-							},
-							error:function() {
-								alert("삭제 에러");
+							}, error:function() {
+								alert("삭제 에러!!")
 							}
+							
 						});
-					});
 				});
+					
+					$("#correctBtn").on("click", function(e){
+						e.preventDefault();
+					});
 			});
 	
 	</script>

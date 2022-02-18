@@ -21,4 +21,6 @@ public interface PostDAO {
 	public int deletePost(@Param("postId") int postId);
 	
 	public Post selectPost(@Param("postId") int postId);
+	
+//	public Post correctionPost(@Param("postId") int postId);
 }

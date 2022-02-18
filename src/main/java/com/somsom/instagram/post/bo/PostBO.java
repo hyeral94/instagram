@@ -68,26 +68,28 @@ public class PostBO {
 	//게시글 삭제
 	public int deletePost(int postId, int userId) {
 		
-		//내가 작성한 글만 확인할 수 있도록
-		Post post = postDAO.selectPost(postId); 
+		Post post = postDAO.selectPost(postId);
 		
 		if(post.getUserId() != userId) {
 			return 0;
 		}
 		
-		//좋아요 삭제
+		// 좋아요 삭제
 		likeBO.deleteLikeByPostId(postId);
-		
-		//댓글삭제
+		// 댓글 삭제
 		commentBO.deleteComment(postId);
 		
-		//이미지 파일 삭제
+		// 파일 삭제
+		
 		FileManagerService.removeFile(post.getImagePath());
 		
-		
-		//포트스 삭제
+		// 포스트 삭제
 		return postDAO.deletePost(postId);
 	}
 
+	// 게시글 수정
+//	public int correctionPost(int postId, int userId) {
+//		return postDAO.correctionPost(postId);
+//	}
 
 }

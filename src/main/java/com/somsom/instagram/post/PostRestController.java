@@ -69,5 +69,15 @@ public class PostRestController {
 		
 		return result;
 	}
-
+	
+//	@PostMapping("/correction")
+//	public Map<String, String> correction(
+//			@RequestParam("postId") int postId,
+//			@RequestParam("content") String content,
+//			HttpServletRequest request) {
+//		
+//		//내가 작성한 글만 수정할 수 있도록
+//		HttpSession session = request.getSession();
+//		int userId = (Integer)session.getAttribute("userId");
+//	}
 }
