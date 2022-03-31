@@ -31,26 +31,28 @@
 <br>
 <h4> ⭐ 주요기능 ⭐ </h4>
 &nbsp; &nbsp;  🧷 회원가입 <br>
-&nbsp; &nbsp;  http://13.124.98.7:8080/user/signup_view <br>
+&nbsp; &nbsp;   <br>
 <br>
 &nbsp; &nbsp; 🧷 로그인 <br> 
-&nbsp; &nbsp; http://13.124.98.7:8080/user/signin_view <br>
+&nbsp; &nbsp;  <br>
 <br>
 &nbsp; &nbsp; 🧷 이미지 첨부하여 게시글 작성  <br>
-&nbsp; &nbsp; http://13.124.98.7:8080/main/mini_home_view?userId=1 <br>
+&nbsp; &nbsp; <br>
 <br>
 &nbsp; &nbsp; 🧷 게시글에 댓글 작성 <br>
-&nbsp; &nbsp; http://13.124.98.7:8080/post/guest_book_view?userId=1 <br>
+&nbsp; &nbsp; <br>
 <br>
 &nbsp; &nbsp; 🧷 게시글 좋아요 및 좋아요 취소 <br>
-&nbsp; &nbsp; http://13.124.98.7:8080/post/setting_view?userId=1 <br>
+&nbsp; &nbsp <br>
 
 <h4> 👾 DEMO 👾 </h4>
 
   
   
-<h4> ⛵ 향후 계획 ⛵</h4>
-  
+<h4> 향후 계획 💭 </h4>
+&nbsp; &nbsp; ◽ 팔로우 & 팔로잉 기능 <br>
+&nbsp; &nbsp; ◽ 개인 피드 추가 <br>
+ 
   
   
 
