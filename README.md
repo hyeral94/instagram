@@ -23,35 +23,35 @@
 <br>
 
 <h4> 🔨 설계 🔨 </h4>
-&nbsp; &nbsp; ◽ 기획 <br>
-&nbsp; &nbsp; https://ovenapp.io/project/DhrNR8A7kOiHG7rUwSPTXK9n0hLLAJhC#anCnY <br>
+◽ 기획 <br>
+https://ovenapp.io/project/DhrNR8A7kOiHG7rUwSPTXK9n0hLLAJhC#anCnY <br>
 <br>
-&nbsp; &nbsp; ◽ 데이터 베이스, URL 설계 <br>
-&nbsp; &nbsp;  https://docs.google.com/spreadsheets/d/1afIFDmETP5cqb_KYhP9z_27CZpIA1oBfM5NAxnSjn-8/edit#gid=0
+◽ 데이터 베이스, URL 설계 <br>
+https://docs.google.com/spreadsheets/d/1afIFDmETP5cqb_KYhP9z_27CZpIA1oBfM5NAxnSjn-8/edit#gid=0
 <br>
 <h4> ⭐ 주요기능 ⭐ </h4>
-&nbsp; &nbsp;  🧷 회원가입 <br>
-&nbsp; &nbsp;   <br>
+🧷 회원가입 <br>
 <br>
-&nbsp; &nbsp; 🧷 로그인 <br> 
-&nbsp; &nbsp;  <br>
 <br>
-&nbsp; &nbsp; 🧷 이미지 첨부하여 게시글 작성  <br>
-&nbsp; &nbsp; <br>
+🧷 로그인 <br> 
 <br>
-&nbsp; &nbsp; 🧷 게시글에 댓글 작성 <br>
-&nbsp; &nbsp; <br>
 <br>
-&nbsp; &nbsp; 🧷 게시글 좋아요 및 좋아요 취소 <br>
-&nbsp; &nbsp <br>
+🧷 이미지 첨부하여 게시글 작성  <br>
+<br>
+<br>
+🧷 게시글에 댓글 작성 <br>
+<br>
+<br>
+🧷 게시글 좋아요 및 좋아요 취소 <br>
+<br>
 
 <h4> 👾 DEMO 👾 </h4>
 
   
   
 <h4> 향후 계획 💭 </h4>
-&nbsp; &nbsp; ◽ 팔로우 & 팔로잉 기능 <br>
-&nbsp; &nbsp; ◽ 개인 피드 추가 <br>
+◽ 팔로우 & 팔로잉 기능 <br>
+◽ 개인 피드 추가 <br>
  
   
   
