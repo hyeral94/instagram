@@ -31,13 +31,21 @@ https://docs.google.com/spreadsheets/d/1afIFDmETP5cqb_KYhP9z_27CZpIA1oBfM5NAxnSj
 <br>
 <h4> ⭐ 주요기능 ⭐ </h4>
 🧷 회원가입 <br>
-<img src="https://user-images.githubusercontent.com/96058856/161208440-dc12c64c-0813-4765-a620-452d6a8cd529.png">
+<img src="https://user-images.githubusercontent.com/96058856/161208440-dc12c64c-0813-4765-a620-452d6a8cd529.png"> 
+📌 아이디 중복확인 <br>
+📌 입력한 비밀번호가 일치하는지 확인 <br>
 <br>
 🧷 로그인 <br> 
-<img src="https://user-images.githubusercontent.com/96058856/161208729-613bb30c-3876-45fd-8372-f91c932b7a48.png">
+<img src="https://user-images.githubusercontent.com/96058856/161208729-613bb30c-3876-45fd-8372-f91c932b7a48.png"> 
 <br>
-🧷 이미지 첨부하여 게시글 작성, 댓글 작성, 좋아요 및 좋아요 취소  <br>
+📌 비밀번호 암호화 <br>
+<br>
+🧷 타임라인  <br>
 <img src="https://user-images.githubusercontent.com/96058856/161208515-5465c529-bbad-454d-94a4-9195e911cc42.png">
+📌 이미지를 첨부한 게시글 업로드 <br>
+📌 게시글에 댓글 달기 <br>
+📌 게시글 좋아요 및 좋아요 취소 <br>
+📌 게시글 작성자만 게시글 삭제 가능 <br>
 
 <br>
 
@@ -55,6 +63,17 @@ https://docs.google.com/spreadsheets/d/1afIFDmETP5cqb_KYhP9z_27CZpIA1oBfM5NAxnSj
 ⚙️ 게시글 삭제 ⚙️ <br>
 <img src="https://user-images.githubusercontent.com/96058856/161214329-e265f1ca-0963-48b1-8d1a-0ae8047bfee9.gif">
 <br>
+
+<h4> 🥕 외부 라이브러리 라이센스 🥕 </h4>
+◽ Tomcat <a href="https://www.apache.org/licenses/LICENSE-2.0" rel="nofollow"> Apache License 2.0 </a> <br>
+◽ Mysql <a href="https://www.apache.org/licenses/LICENSE-2.0" rel="nofollow"> GPLv2 or proprietary </a> <br>
+◽ Spring framework <a href="https://www.apache.org/licenses/LICENSE-2.0" rel="nofollow"> Apache License 2.0 </a> <br>
+◽ Mybatis <a href="https://www.apache.org/licenses/LICENSE-2.0" rel="nofollow"> Apache License 2.0 </a> <br>
+◽ Bootstrap <a href="https://www.apache.org/licenses/LICENSE-2.0" rel="nofollow"> MIT License </a> <br>
+◽ jQuery <a href="https://www.apache.org/licenses/LICENSE-2.0" rel="nofollow"> MIT License </a> <br>
+◽ 이미지 출처 : <a href="https://www.apache.org/licenses/LICENSE-2.0" rel="nofollow"> pixabay </a> <br>
+<br>
+
 <h4> 🦄 향후계획 🦄 </h4>
 ◽ 팔로우 & 팔로잉 기능 <br>
 ◽ 개인 피드 추가 <br>
